@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PGO</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="Logo">
+            <a href="index.html"><img src="Images/Havenist_transparent.png" alt="Havenist"></a>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link pay-rent-box bold-link" href="pay_rent.html">
+                            <i class="fas fa-credit-card"></i> Pay Rent
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link property-owner-btn" href="Property_Owners.html">For Property Owners</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="signupDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sign up
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="signupDropdown">
+                            <a class="dropdown-item" href="User_Signup.html">User Signup</a>
+                            <a class="dropdown-item" href="Customer_signup.html">Customer Signup</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Log in
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="loginDropdown">
+                            <a class="dropdown-item" href="User_Login.html">User Login</a>
+                            <a class="dropdown-item" href="Customer_Login.html">Customer Login</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle custom-dropdown-btn" href="#" id="menuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="bi bi-menu-button-wide-fill"></i> Menu
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="menuDropdown">
+                            <a class="dropdown-item" href="About.html">About Us</a>
+                            <a class="dropdown-item" href="Property_Owners.html">For Property Owners</a>
+                            <a class="dropdown-item" href="Services.html">Services</a>
+                            <a class="dropdown-item" href="contact.html">Contact</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <h1>World's Largest PG Guest Property Site</h1>
+            <div class="search-box">
+                <form id="searchForm">
+                    <select id="city" name="city" onchange="loadLocalities()">
+                        <option value="">Select City</option>
+                        <option value="Ahmedabad">Ahmedabad</option>
+                        <option value="Bangalore">Bangalore</option>
+                        <option value="Chennai">Chennai</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Gurgaon">Gurgaon</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Kolkata">Kolkata</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Pune">Pune</option>
+                        <!-- Add more cities as needed -->
+                    </select>
+                    <input type="text" id="localities" name="localities" placeholder="Search up to 3 localities or landmarks">
+        
+                    <select id="propertyType" name="propertyType">
+                        <option value="">Select Property Type</option>
+                        <option value="Full House">Full House</option>
+                        <option value="PG/Hostel">PG/Hostel</option>
+                        <option value="Flatmates">Flatmates</option>
+                    </select>
+        
+                    <select id="FullHouse_bhkType" name="FullHouse_bhkType" class="hidden">
+                        <option value="">BHK Type</option>
+                        <option value="1 BHK">1 BHK</option>
+                        <option value="2 BHK">2 BHK</option>
+                        <option value="3 BHK">3 BHK</option>
+                        <option value="4 BHK">4 BHK</option>
+                        <option value="5 BHK">4+ BHK</option>
+                    </select>
+        
+                    <select id="PG/Hostel_Sharing" name="PG/Hostel_Sharing" class="hidden">
+                        <option value="">Sharing</option>
+                        <option value="1 Sharing">1 Sharing</option>
+                        <option value="2 Sharing">2 Sharing</option>
+                        <option value="3 Sharing">3 Sharing</option>
+                        <option value="4 Sharing">4 Sharing</option>
+                        <option value="5 Sharing">4+ Sharing</option>
+                    </select>
+        
+                    <select id="Flatmates" name="Flatmates" class="hidden">
+                        <option value="">Sharing</option>
+                        <option value="1 Sharing">1 Sharing</option>
+                        <option value="2 Sharing">2 Sharing</option>
+                        <option value="3 Sharing">3 Sharing</option>
+                        <option value="4 Sharing">4 Sharing</option>
+                        <option value="5 Sharing">4+ Sharing</option>
+                    </select>
+        
+                    <select id="Rent_Buy" name="Rent_Buy" class="hidden">
+                        <option value="">Rent/Buy</option>
+                        <option value="Buy">Buy</option>
+                        <option value="Rent">Rent</option>
+                    </select>
+        
+                    <select id="availability" name="availability" class="hidden">
+                        <option value="">Availability</option>
+                        <option value="Immediate">Immediate</option>
+                        <option value="Within a week">Within a week</option>
+                        <option value="Within a month">Within a month</option>
+                        <option value="After a month">After a month</option>
+                    </select>
+                    <button type="button" onclick="searchProperties()">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchProperties() {
+            const form = document.getElementById('searchForm');
+            const formData = new FormData(form);
+            const params = new URLSearchParams(formData).toString();
+            const searchPage = 'Search.html'; // Change this to your actual search results page
+            
+            // Redirect to Search.html with query parameters
+            window.location.href = `${searchPage}?${params}`;
+        }
+
+        document.getElementById('propertyType').addEventListener('change', function() {
+            const propertyType = this.value;
+            
+            // Hide all blocks initially
+            document.getElementById('FullHouse_bhkType').classList.add('hidden');
+            document.getElementById('PG/Hostel_Sharing').classList.add('hidden');
+            document.getElementById('Flatmates').classList.add('hidden');
+            document.getElementById('Rent_Buy').classList.add('hidden');
+            document.getElementById('availability').classList.add('hidden');
+            
+            if (propertyType === 'Full House') {
+                document.getElementById('FullHouse_bhkType').classList.remove('hidden');
+                document.getElementById('Rent_Buy').classList.remove('hidden');
+            } else if (propertyType === 'PG/Hostel') {
+                document.getElementById('PG/Hostel_Sharing').classList.remove('hidden');
+            } else if (propertyType === 'Flatmates') {
+                document.getElementById('Flatmates').classList.remove('hidden');
+            }
+
+            // Show availability for all cases
+            if (propertyType) {
+                document.getElementById('availability').classList.remove('hidden');
+            }
+        });
+
+        function loadLocalities() {
+            const city = document.getElementById("city").value;
+            const localitiesDropdown = document.getElementById("localities");
+
+            // Clear previous options
+            localitiesDropdown.innerHTML = '<option value="">Search up to 3 localities or landmarks</option>';
+
+            if (city) {
+                // Fetch localities from a hypothetical API
+                fetch(`https://example.com/api/localities?city=${encodeURIComponent(city)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.localities.forEach(locality => {
+                            const option = document.createElement("option");
+                            option.value = locality;
+                            option.text = locality;
+                            localitiesDropdown.add(option);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching localities:', error));
+            }
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
